@@ -137,7 +137,7 @@
        <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-    <sphere radius=".2"/>
+    <mesh filename="package://floatinghead_description/meshes/pupper.dae"/>
       </geometry>
       <material name="red"/>
     </visual>
