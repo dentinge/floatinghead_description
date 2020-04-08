@@ -173,8 +173,8 @@
         </noise>
       </ray>
       <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_gpu_laser.so">
-        <topicName>/rrbot/laser/scan</topicName>
-        <frameName>hokuyo_link</frameName>
+        <topicName>/lidar/laser/scan</topicName>
+        <frameName>laser_link</frameName>
       </plugin>
     </sensor>
   </gazebo>
