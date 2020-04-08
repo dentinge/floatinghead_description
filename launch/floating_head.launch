@@ -1,6 +1,6 @@
 <launch>
 
-  <arg name="model" default="$(find floating_head_description)/urdf/floatinghead.urdf"/>
+  <arg name="model" default="$(find floatinghead_description)/urdf/floatinghead.urdf"/>
 
 
 
@@ -9,13 +9,13 @@
 
 <!-- launch gazebo world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find floating_head_description)/gazebo/floatinghead.world"/>
+    <arg name="world_name" value="$(find floatinghead_description)/gazebo/floatinghead.world"/>
     <!-- more default parameters can be changed here -->
   </include>
 
   <!-- Spawn a robot into Gazebo -->
-<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find floating_head_description)/urdf/floatinghead.urdf -urdf -z .1 -model floatinghead" />
+<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find floatinghead_description)/urdf/floatinghead.urdf -urdf -z .1 -model floatinghead" />
 
-<node name="rqt_gui" pkg="rqt_gui" type="rqt_gui" args="--perspective-file $(find floating_head_description)/rqt/floatinghead.perspective"/>
+<node name="rqt_gui" pkg="rqt_gui" type="rqt_gui" args="--perspective-file $(find floatinghead_description)/rqt/floatinghead.perspective"/>
 
 </launch>
