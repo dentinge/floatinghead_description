@@ -27,7 +27,7 @@
     </inertial>
     <visual>
       <geometry>
-        <box size="0.2 0.2 1.2" /> <!-- does not need to match collision -->
+        <box size="0.2 0.8 .5" /> <!-- does not need to match collision -->
       </geometry>
     </visual>
     <collision>
