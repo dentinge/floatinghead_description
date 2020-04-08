@@ -4,7 +4,7 @@
   
   
   <!-- initiate rviz -->
-  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find floatinghead_description)/rviz/config_file.rviz" />
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find floatinghead_description)/rviz/floatinghead.rviz" />
 
 
 
