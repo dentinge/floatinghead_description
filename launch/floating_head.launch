@@ -13,7 +13,7 @@
 
 <!-- launch gazebo world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find floatinghead_description)/gazebo/floatinghead.world"/>
+    <arg name="world_name" value="$(find floatinghead_description)/gazebo/cafe.world"/>
     <!-- more default parameters can be changed here -->
   </include>
 
