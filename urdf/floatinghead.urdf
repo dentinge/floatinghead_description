@@ -29,8 +29,8 @@
       <geometry>
         <box size="0.2 0.2 1.2" /> <!-- does not need to match collision -->
       </geometry>
-      <material name="black_metal">
-        <color rgba="0.1 0.1 0.1 1"/>
+      <material>
+        <color rgba="0.8 0.0 0.8 0.5"/>
       </material>
     </visual>
     <collision>
