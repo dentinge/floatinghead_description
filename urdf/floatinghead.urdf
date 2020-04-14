@@ -1,4 +1,8 @@
 <robot name="test_model">
+  
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
 
   <!-- root link, on the ground just below the model origin -->
   <link name="base_footprint">
@@ -142,6 +146,22 @@
       <material name="red"/>
     </visual>
     </link>
+  
+    <link name="sensor_laser">
+    <visual>
+      <geometry>
+        <mesh filename="package://floatinghead_description/meshes/lidar.dae"/>
+        <!--box size="${laser_size_x} ${laser_size_y} ${laser_size_z}"/-->
+      </geometry>
+      <material name="blue"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.03 0.03 0.03"/>
+      </geometry>
+    </collision>
+    <xacro:default_inertial mass="0.02"/>
+  </link>
 
     <gazebo reference="laser_link">
      <sensor type="gpu_ray" name="head_hokuyo_sensor">
