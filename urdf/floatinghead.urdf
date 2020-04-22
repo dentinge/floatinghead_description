@@ -331,7 +331,7 @@
     </visual>
     </link>
 
-  <gazebo reference = "sonic_link">
+  <gazebo reference = "sonic_link_3">
         <sensor type="ray" name="ultrasonic">
           <pose>0.0 0.25 0 0 0 0</pose>
           <update_rate>5</update_rate>
