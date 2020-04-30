@@ -30,5 +30,9 @@
 <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find floatinghead_description)/urdf/floatinghead.urdf -urdf -z .1 -model floatinghead" />
 
 <node name="rqt_gui" pkg="rqt_gui" type="rqt_gui" args="--perspective-file $(find floatinghead_description)/rqt/floatinghead.perspective"/>
+  
+<node name="lidar_quad_node" pkg="openpup_ros" type="lidar_quad_node.py" />
+  
+<node name="gazebo_drive_node" pkg="openpup_ros" type="gazebo_drive_node.py"/>
 
 </launch>
