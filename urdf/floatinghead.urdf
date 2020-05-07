@@ -34,7 +34,7 @@
     </inertial>
     <visual>
       <geometry>
-        <box size="0.9 0.23 .74" /> <!-- does not need to match collision -->
+        <mesh filename="package://floatinghead_description/meshes/OD.dae"/>
       </geometry>
     </visual>
     <collision>
@@ -57,15 +57,7 @@
   </gazebo>
 
 
-
-  <!-- <joint name = "base_link_joint_rev" type="revolute">
-    <origin xyz="0 0 0" rpy = "0 0 0"/>
-    <parent link = "base_link"/>
-    <child link = "base_link_2"/>
-    <limit lower = "-0.0001" upper = "0.0001" effort = "1000" velocity = "1000"/>
-  </joint> -->
-
-    <joint name="camera_joint" type="fixed">
+  <joint name="camera_joint" type="fixed">
     <axis xyz="0 1 0" />
     <origin xyz="0 0 0.49" rpy="0 0 0"/>
     <parent link="base_link"/>
@@ -225,9 +217,8 @@
        <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-    <sphere radius ="0.05"/>
+   <mesh filename="package://floatinghead_description/meshes/kinect.dae"/>
       </geometry>
-      <material name="red"/>
     </visual>
     </link>
 
@@ -286,7 +277,7 @@
        <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-    <sphere radius ="0.05"/>
+   <mesh filename="package://floatinghead_description/meshes/kinect.dae"/>
       </geometry>
       <material name="red"/>
     </visual>
@@ -347,7 +338,7 @@
        <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-    <sphere radius ="0.05"/>
+   <mesh filename="package://floatinghead_description/meshes/kinect.dae"/>
       </geometry>
       <material name="red"/>
     </visual>
@@ -408,7 +399,7 @@
        <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-    <sphere radius ="0.05"/>
+   <mesh filename="package://floatinghead_description/meshes/kinect.dae"/>
       </geometry>
       <material name="red"/>
     </visual>
