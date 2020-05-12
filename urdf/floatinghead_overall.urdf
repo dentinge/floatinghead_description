@@ -53,33 +53,35 @@
     <maxVel>1.0</maxVel>
     <minDepth>0.00</minDepth>
   </gazebo>
-  <joint name="camera_joint" type="fixed">
-    <axis xyz="0 1 0"/>
-    <origin rpy="0 0 0" xyz="0.25 0.18 0.5"/>
+  <!-- <joint name="camera_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.25 0.18 0.5" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="camera_link"/>
-  </joint>
+  </joint> -->
   <!-- Camera -->
-  <link name="camera_link">
+  <!-- <link name="camera_link">
     <collision>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-        <box size=".1 .1 .1"/>
+    <box size=".1 .1 .1"/> 
       </geometry>
     </collision>
+
     <visual>
-      <origin rpy="0 0 1.5" xyz="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 0 1.5"/>
       <geometry>
-        <mesh filename="package://floatinghead_description/meshes/kinect.dae"/>
+   <mesh filename="package://floatinghead_description/meshes/kinect.dae"/>
       </geometry>
       <material name="red"/>
     </visual>
+
     <inertial>
-      <mass value="1e-5"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
     </inertial>
-  </link>
+  </link> -->
   <gazebo>
     <plugin filename="libgazebo_ros_planar_move.so" name="object_controller">
       <commandTopic>cmd_vel</commandTopic>
@@ -89,8 +91,8 @@
       <robotBaseFrame>base_footprint</robotBaseFrame>
     </plugin>
   </gazebo>
-  <gazebo reference="camera_link">
-    <sensor name="camera1" type="camera">
+  <!-- <gazebo reference="camera_link">
+    <sensor type="camera" name="camera1">
       <update_rate>30.0</update_rate>
       <camera name="head">
         <horizontal_fov>1.3962634</horizontal_fov>
@@ -105,14 +107,11 @@
         </clip>
         <noise>
           <type>gaussian</type>
-          <!-- Noise is sampled independently per pixel on each frame.
-               That pixel's noise value is added to each of its color
-               channels, which at that point lie in the range [0,1]. -->
           <mean>0.0</mean>
           <stddev>0.007</stddev>
         </noise>
       </camera>
-      <plugin filename="libgazebo_ros_camera.so" name="camera_controller">
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
         <cameraName>floatinghead/camera1</cameraName>
@@ -127,7 +126,7 @@
         <distortionT2>0.0</distortionT2>
       </plugin>
     </sensor>
-  </gazebo>
+  </gazebo> -->
   <joint name="laser_joint" type="fixed">
     <axis xyz="0 0 0"/>
     <origin rpy="0 0 0" xyz="0.35 0.18 0.48"/>
@@ -645,10 +644,87 @@
     <plugin filename="libgazebo_ros_control.so" name="gazebo_ros_control">
     </plugin>
   </gazebo>
+  <!-- Use world link for fixing the robot-->
+  <!-- <link name="world" /> -->
+  <!-- <inertial>
+		<mass value="0.00001" />
+		<origin rpy="0 0 0" xyz="0 0 0" />
+		<inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0" />
+	</inertial> -->
+  <link name="camera">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.05 "/>
+      </geometry>
+    </visual>
+    <inertial>
+      <mass value="1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6"/>
+    </inertial>
+  </link>
+  <!-- <joint name="camera_joint" type="fixed">
+		<axis xyz="0 1 0" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="world" />
+		<child link="camera" />
+	</joint> -->
+  <gazebo reference="camera">
+    <static>true</static>
+  </gazebo>
+  <gazebo reference="camera">
+    <sensor name="depth_camera" type="depth">
+      <update_rate>20</update_rate>
+      <camera>
+        <horizontal_fov>1.047198</horizontal_fov>
+        <image>
+          <width>600</width>
+          <height>600</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.05</near>
+          <far>3</far>
+        </clip>
+      </camera>
+      <plugin filename="libgazebo_ros_openni_kinect.so" name="camera_controller">
+        <baseline>0.2</baseline>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>1.0</updateRate>
+        <cameraName>depth_camera_ir</cameraName>
+        <imageTopicName>depth_camera/color/image_raw</imageTopicName>
+        <cameraInfoTopicName>depth_camera/color/camera_info</cameraInfoTopicName>
+        <depthImageTopicName>depth_camera/depth/image_raw</depthImageTopicName>
+        <depthImageInfoTopicName>depth_camera/depth/camera_info</depthImageInfoTopicName>
+        <pointCloudTopicName>depth_camera/depth/points</pointCloudTopicName>
+        <frameName>depth_frame</frameName>
+        <pointCloudCutoff>0.2</pointCloudCutoff>
+        <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
+        <distortionK1>0.00000001</distortionK1>
+        <distortionK2>0.00000001</distortionK2>
+        <distortionK3>0.00000001</distortionK3>
+        <distortionT1>0.00000001</distortionT1>
+        <distortionT2>0.00000001</distortionT2>
+        <CxPrime>0</CxPrime>
+        <Cx>0</Cx>
+        <Cy>0</Cy>
+        <focalLength>0</focalLength>
+        <hackBaseline>0</hackBaseline>
+      </plugin>
+    </sensor>
+  </gazebo>
   <joint name="robot_arm" type="fixed">
     <parent link="base_link"/>
     <child link="arm_base_bottom"/>
-    <origin rpy="0  0  0" xyz="0.15 0.18 0.48"/>
+    <origin rpy="0  0  0" xyz="0.35 0.18 0.53"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="1.0" lower="-2.96705973" upper="2.96705973" velocity="1.0"/>
+  </joint>
+  <joint name="robot_camera" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera"/>
+    <origin rpy="0  0  0" xyz="0.55 0.18 0.38"/>
     <axis xyz="0  0  0"/>
     <limit effort="1.0" lower="-2.96705973" upper="2.96705973" velocity="1.0"/>
   </joint>

@@ -4,11 +4,21 @@
 
 <xacro:include filename="$(find floatinghead_description)/urdf/floatinghead.urdf.xacro"/>
 <xacro:include filename="$(find arm_description)/urdf/Arm_URDF.xacro"/>
+<xacro:include filename="$(find dcam_description)/urdf/dcam_URDF.xacro"/>
+
 
   <joint name="robot_arm" type="fixed">
     <parent link ="base_link"/>
     <child link = "arm_base_bottom"/>
-    <origin rpy="0  0  0" xyz="0.15 0.18 0.48"/>
+    <origin rpy="0  0  0" xyz="0.35 0.18 0.53"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="1.0" lower="-2.96705973" upper="2.96705973" velocity="1.0"/>
+  </joint>
+
+    <joint name="robot_camera" type="fixed">
+    <parent link ="base_link"/>
+    <child link = "camera"/>
+    <origin rpy="0  0  0" xyz="0.55 0.18 0.38"/>
     <axis xyz="0  0  0"/>
     <limit effort="1.0" lower="-2.96705973" upper="2.96705973" velocity="1.0"/>
   </joint>
