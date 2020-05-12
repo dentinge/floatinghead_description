@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot name ="floatinghead_model" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+<xacro:include filename="$(find floatinghead_description)/urdf/floatinghead.urdf.xacro"/>
+<xacro:include filename="$(find arm_description)/urdf/Arm_URDF.xacro"/>
+
+  <joint name="robot_arm" type="fixed">
+    <parent link ="base_link"/>
+    <child link = "arm_base_bottom"/>
+    <origin rpy="0  0  0" xyz="0.15 0.18 0.48"/>
+    <axis xyz="0  0  0"/>
+    <limit effort="1.0" lower="-2.96705973" upper="2.96705973" velocity="1.0"/>
+  </joint>
+
+</robot>

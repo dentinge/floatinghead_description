@@ -1,4 +1,5 @@
-<robot name="test_model">
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   
   <material name="blue1">
     <color rgba="0 0 0.8 1"/>
@@ -429,13 +430,13 @@
 
     <link name="imu_link">
       
-    <visual>
+    <!-- <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
     <sphere radius ="0.05"/>
       </geometry>
       <material name="red"/>
-    </visual>
+    </visual> -->
     </link>
 
     <gazebo reference="imu_link">
@@ -480,7 +481,7 @@
 
 <!--testing adding the arm urdf-->
   <!-- Include all models -->
-  <xacro:include filename="$(find arm_description)/urdf/Arm_URDF.urdf.xacro"/>
+  <!-- <xacro:include filename="$(find arm_description)/urdf/Arm_URDF.urdf.xacro"/> -->
 
   <!-- using the models -->
   <!-- <xacro:Arm_URDF base_link="base_link"/>
@@ -489,12 +490,12 @@
 
   <!-- <xacro:include filename = "Arm_URDF.xacro" ns="arm"/> -->
 
-  <joint name="robot_arm" type="fixed">
+  <!-- <joint name="robot_arm" type="fixed">
     <parent link ="base_link"/>
     <child link = "arm.arm_base_bottom"/>
     <origin rpy="0  0  0" xyz="0   0   0"/>
     <axis xyz="0  0  0"/>
     <limit effort="1.0" lower="-2.96705973" upper="2.96705973" velocity="1.0"/>
-  </joint>
+  </joint> -->
 
 </robot>
