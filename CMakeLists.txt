@@ -15,6 +15,9 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   visualization_msgs
   cv_bridge
+  controller_manager
+  joint_state_publisher
+  joint_state_controller
 )
 
 ## System dependencies are found with CMake's conventions

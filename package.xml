@@ -67,7 +67,15 @@
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>visualization_msgs</exec_depend>
+  <build_depend>controller_manager</build_depend>
+  <build_depend>joint_state_controller</build_depend>
+  <build_depend>joint_state_publisher</build_depend>
+  <build_depend>urdf</build_depend>
 
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>joint_state_controller</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>urdf</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
